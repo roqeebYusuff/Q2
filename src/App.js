@@ -11,7 +11,7 @@ function App() {
   }, []);
 
   return (
-    <Container>
+    <Container className="my-4">
       <h2>Covid stats in Nigeria</h2>
       {state.loading && <>Loading...</>}
       {!state.loading && state.error ? <>Error: {state.error} </> : null}
@@ -32,7 +32,7 @@ function App() {
           <span>
             death: <b>{state.records.death} </b>
           </span>
-          <Table bordered borderless hover responsive size="sm" striped>
+          <Table className="mt-4" bordered borderless hover responsive size="sm" striped>
             <thead>
               <tr>
                 <th>State</th>
@@ -44,7 +44,7 @@ function App() {
             </thead>
             <tbody>
               {state?.records?.states?.map((rec) => (
-                <tr>
+                <tr key={rec._id}>
                   <th scope="row">{rec.state}</th>
                   <td>{rec.confirmedCases}</td>
                   <td>{rec.casesOnAdmission}</td>
